@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://i2bofsqlshup"]
+
+[node name="Node2D" type="Node2D" unique_id=1399996452]
+
+[node name="Label" type="Label" parent="." unique_id=2038606198]
+offset_left = 958.0
+offset_top = 476.0
+offset_right = 1994.0
+offset_bottom = 1326.0
+text = "hello"
