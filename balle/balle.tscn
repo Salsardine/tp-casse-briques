@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bxcc6d5c0ebmj" path="res://balle/control_balle.gd" id="1_50dfo"]
 [ext_resource type="Texture2D" uid="uid://dx2ej6nfy5j2f" path="res://balle/skin_balle.tres" id="1_eobpy"]
+[ext_resource type="AudioStream" uid="uid://c0wixdciymrr2" path="res://assets/Big Explosion Sound Effect.wav" id="3_jdfn4"]
+[ext_resource type="AudioStream" uid="uid://3srkj8vadf6e" path="res://assets/Raquette.wav" id="3_t25cb"]
+[ext_resource type="AudioStream" uid="uid://4x1j8kbtnerb" path="res://assets/Bordure.wav" id="4_6n0av"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8wwvb"]
 friction = 0.0
@@ -19,3 +22,13 @@ texture = ExtResource("1_eobpy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460963699]
 shape = SubResource("CircleShape2D_5vj2c")
+
+[node name="AudioRaquette" type="AudioStreamPlayer2D" parent="." unique_id=1548555361]
+stream = ExtResource("3_t25cb")
+
+[node name="AudioBordure" type="AudioStreamPlayer2D" parent="." unique_id=153414797]
+stream = ExtResource("4_6n0av")
+
+[node name="AudioBrique" type="AudioStreamPlayer2D" parent="." unique_id=769794826]
+stream = ExtResource("3_jdfn4")
+volume_db = -10.0

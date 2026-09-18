@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bcxqm5gcafkd"]
+
+[ext_resource type="Texture2D" uid="uid://by5vsukftdem3" path="res://brique/skin_brique.tres" id="1_gmbj6"]
+[ext_resource type="Script" uid="uid://371h11k4wjml" path="res://brique/brique.gd" id="1_y8g86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vj2c"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo4pk"]
+size = Vector2(80, 16)
+
+[node name="Brique" type="StaticBody2D" unique_id=418081115 groups=["brique"]]
+script = ExtResource("1_y8g86")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=656000463]
+texture = ExtResource("1_gmbj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557399275]
+shape = SubResource("RectangleShape2D_5vj2c")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1916708104]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1972953830]
+shape = SubResource("RectangleShape2D_vo4pk")

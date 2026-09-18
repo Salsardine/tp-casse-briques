@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dop6y2c6kojha"]
+
+[ext_resource type="Script" uid="uid://gjo0vt1n71dj" path="res://restart/restart.gd" id="1_mlrm0"]
+[ext_resource type="AudioStream" uid="uid://caer1r0qo2b3g" path="res://assets/Rick Astley - Never Gonna Give You Up (Official Music Video).mp3" id="2_7el0v"]
+[ext_resource type="AudioStream" uid="uid://u5qj4iier84o" path="res://assets/The Price is Right Losing Horn - Sound Effect (HD).mp3" id="3_dht0s"]
+
+[sub_resource type="GDScript" id="GDScript_tffrh"]
+script/source = "extends Button
+
+
+func _ready() -> void:
+	position.x = get_viewport_rect().size.x / 2
+	position.y = get_viewport_rect().size.y - get_viewport_rect().size.y / 6
+"
+
+[sub_resource type="GDScript" id="GDScript_vqg6r"]
+script/source = "extends Label
+
+
+func _ready() -> void:
+	position.x = get_viewport_rect().size.x / 2
+	position.y = get_viewport_rect().size.y - get_viewport_rect().size.y / 2
+"
+
+[node name="Control" type="Control" unique_id=1591087864]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mlrm0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1953666840]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="." unique_id=62994720]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 185.0
+offset_bottom = 64.0
+text = "Rejouer"
+icon_alignment = 1
+vertical_icon_alignment = 2
+script = SubResource("GDScript_tffrh")
+
+[node name="Label" type="Label" parent="." unique_id=225120957]
+layout_mode = 0
+offset_top = 147.0
+offset_right = 43.0
+offset_bottom = 210.0
+horizontal_alignment = 1
+script = SubResource("GDScript_vqg6r")
+
+[node name="AudioVictoire" type="AudioStreamPlayer2D" parent="." unique_id=1624094797]
+stream = ExtResource("2_7el0v")
+pitch_scale = 1.47
+
+[node name="AudioDefaite" type="AudioStreamPlayer2D" parent="." unique_id=920275426]
+stream = ExtResource("3_dht0s")
+volume_db = 1.0

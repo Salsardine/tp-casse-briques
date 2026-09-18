@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://do5gsbjv7ugl7"]
 
+[ext_resource type="Script" uid="uid://dmve5752yyinb" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b8gdrejq8m5an" path="res://raquette/raquette.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://do72u7vjlw4mt" path="res://balle/balle.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://4biu6ic2frr1" path="res://fosse.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bcxqm5gcafkd" path="res://brique/brique.tscn" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://dmfgwb6mcjxas" path="res://assets/【CS2】Counter Strike 2 Soundtrack - Main Menu.mp3" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://doithi46jngmb" path="res://audio_stream_player_2d.gd" id="7_272bh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b0id3"]
 friction = 0.0
@@ -26,51 +30,44 @@ bounce = 1.0
 normal = Vector2(-0.00448426, 0.9999899)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
-friction = 0.0
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vj2c"]
 size = Vector2(1226, 182)
 
 [node name="Node2D" type="Node2D" unique_id=1399996452]
+script = ExtResource("1_1bvp3")
+scene_brique = ExtResource("4_1bvp3")
 
-[node name="Label" type="Label" parent="." unique_id=2038606198]
-offset_left = 512.0
-offset_top = 317.0
-offset_right = 557.0
-offset_bottom = 357.0
-text = "hello"
-
-[node name="Raquette" parent="." unique_id=1268785383 instance=ExtResource("1_ig7tw")]
+[node name="Raquette" parent="." unique_id=1268785383 groups=["raquette"] instance=ExtResource("1_ig7tw")]
 position = Vector2(550, 528)
 motion_mode = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1972830955]
+[node name="MurGauche" type="StaticBody2D" parent="." unique_id=1972830955 groups=["bordure"]]
 physics_material_override = SubResource("PhysicsMaterial_b0id3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1523040296]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurGauche" unique_id=1523040296 groups=["bordure"]]
 position = Vector2(0, 549)
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=32357416]
+[node name="MurDroit" type="StaticBody2D" parent="." unique_id=32357416 groups=["bordure"]]
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1580133652]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MurDroit" unique_id=1580133652 groups=["bordure"]]
 position = Vector2(1153, 549)
 shape = SubResource("WorldBoundaryShape2D_5vj2c")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=96262344]
+[node name="Plafond" type="StaticBody2D" parent="." unique_id=96262344 groups=["bordure"]]
 position = Vector2(533, 0)
 physics_material_override = SubResource("PhysicsMaterial_1bvp3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=358308072]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plafond" unique_id=358308072 groups=["bordure"]]
 shape = SubResource("WorldBoundaryShape2D_vo4pk")
 
 [node name="Balle" parent="." unique_id=372926582 groups=["balle"] instance=ExtResource("2_0xm2m")]
 position = Vector2(547, 394)
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 gravity_scale = 0.0
-lock_rotation = true
 
 [node name="Fosse" type="Area2D" parent="." unique_id=958420780]
 script = ExtResource("3_h2yge")
@@ -78,3 +75,8 @@ script = ExtResource("3_h2yge")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse" unique_id=391886745]
 position = Vector2(572, 740)
 shape = SubResource("RectangleShape2D_5vj2c")
+
+[node name="Musique Fond" type="AudioStreamPlayer2D" parent="." unique_id=615367823]
+stream = ExtResource("6_7mycd")
+autoplay = true
+script = ExtResource("7_272bh")

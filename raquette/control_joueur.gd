@@ -19,5 +19,17 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * vitesse
 	velocity.y = 0
 	move_and_slide()
+	position.y = position_y_fixe
 	
-	position.y = position_y_fixe  # on force le Y à rester fixe, quoi qu'il arrive
+	if direction != 0:
+		if not $AudioDeplacement.playing:
+			$AudioDeplacement.play()
+	else:
+		$AudioDeplacement.stop()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("bordure"):
+			if not $AudioMurRaquette.playing:
+				$AudioMurRaquette.play()

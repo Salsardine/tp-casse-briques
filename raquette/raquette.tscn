@@ -2,15 +2,26 @@
 
 [ext_resource type="Script" uid="uid://dcrdbwahax312" path="res://raquette/control_joueur.gd" id="1_8wwvb"]
 [ext_resource type="Texture2D" uid="uid://cby4cb1jp2170" path="res://raquette/skin_raquette_a.tres" id="1_w6mu3"]
+[ext_resource type="AudioStream" uid="uid://cxaf4fhspaylu" path="res://assets/Tractor - Sound Effect 🔊.mp3" id="3_jdb1i"]
+[ext_resource type="AudioStream" uid="uid://bq6fglmel64l7" path="res://assets/Roblox Death Sound (Oof) - Sound Effect (HD).wav" id="3_rdu13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6mu3"]
-size = Vector2(64, 16)
+size = Vector2(72, 16)
 
 [node name="Raquette" type="CharacterBody2D" unique_id=1268785383]
 script = ExtResource("1_8wwvb")
 
 [node name="SkinRaquetteA" type="Sprite2D" parent="." unique_id=1195807591]
+position = Vector2(7.1525574e-07, 0)
+scale = Vector2(1.15625, 1)
 texture = ExtResource("1_w6mu3")
 
 [node name="CollisionShapeD2" type="CollisionShape2D" parent="." unique_id=632836557]
 shape = SubResource("RectangleShape2D_w6mu3")
+
+[node name="AudioDeplacement" type="AudioStreamPlayer2D" parent="." unique_id=857519509]
+stream = ExtResource("3_jdb1i")
+volume_db = -10.0
+
+[node name="AudioMurRaquette" type="AudioStreamPlayer2D" parent="." unique_id=231168209]
+stream = ExtResource("3_rdu13")
