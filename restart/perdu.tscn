@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dop6y2c6kojha"]
+
+[ext_resource type="Script" uid="uid://gjo0vt1n71dj" path="res://restart/restart.gd" id="1_mlrm0"]
+
+[node name="Control" type="Control" unique_id=1591087864]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mlrm0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1953666840]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1175.0
+offset_bottom = 677.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="." unique_id=62994720]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 408.0
+offset_right = 628.0
+offset_bottom = 446.0
+text = "Rejouer"
+
+[node name="Label" type="Label" parent="." unique_id=225120957]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 235.0
+offset_right = 550.0
+offset_bottom = 284.0
+text = "Perdu
+"
