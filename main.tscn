@@ -1,10 +1,35 @@
 [gd_scene format=3 uid="uid://do5gsbjv7ugl7"]
 
+[ext_resource type="PackedScene" uid="uid://b8gdrejq8m5an" path="res://raquette/raquette.tscn" id="1_ig7tw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vj2c"]
+normal = Vector2(-1, 0)
+
 [node name="Node2D" type="Node2D" unique_id=1399996452]
 
 [node name="Label" type="Label" parent="." unique_id=2038606198]
-offset_left = 525.0
-offset_top = 286.0
-offset_right = 1561.0
-offset_bottom = 1136.0
+offset_left = 512.0
+offset_top = 317.0
+offset_right = 557.0
+offset_bottom = 357.0
 text = "hello"
+
+[node name="Raquette" parent="." unique_id=1268785383 instance=ExtResource("1_ig7tw")]
+position = Vector2(550, 528)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1972830955]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1523040296]
+position = Vector2(0, 549)
+shape = SubResource("WorldBoundaryShape2D_ig7tw")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=32357416]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1580133652]
+position = Vector2(1153, 549)
+shape = SubResource("WorldBoundaryShape2D_5vj2c")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=399552744]
