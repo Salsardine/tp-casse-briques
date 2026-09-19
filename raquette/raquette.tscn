@@ -5,6 +5,43 @@
 [ext_resource type="AudioStream" uid="uid://cxaf4fhspaylu" path="res://assets/Tractor - Sound Effect 🔊.mp3" id="3_jdb1i"]
 [ext_resource type="AudioStream" uid="uid://bq6fglmel64l7" path="res://assets/Roblox Death Sound (Oof) - Sound Effect (HD).wav" id="3_rdu13"]
 
+[sub_resource type="Animation" id="Animation_jdb1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.15625, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uvb7y"]
+resource_name = "raquette"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.15625, 1), Vector2(0.5, 0.433), Vector2(1.15625, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_652gn"]
+_data = {
+&"RESET": SubResource("Animation_jdb1i"),
+&"raquette": SubResource("Animation_uvb7y")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6mu3"]
 size = Vector2(72, 16)
 
@@ -16,12 +53,16 @@ position = Vector2(7.1525574e-07, 0)
 scale = Vector2(1.15625, 1)
 texture = ExtResource("1_w6mu3")
 
+[node name="AnimationRaquette" type="AnimationPlayer" parent="." unique_id=1328820336]
+root_node = NodePath("../SkinRaquetteA")
+libraries/ = SubResource("AnimationLibrary_652gn")
+
 [node name="CollisionShapeD2" type="CollisionShape2D" parent="." unique_id=632836557]
 shape = SubResource("RectangleShape2D_w6mu3")
 
 [node name="AudioDeplacement" type="AudioStreamPlayer2D" parent="." unique_id=857519509]
 stream = ExtResource("3_jdb1i")
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="AudioMurRaquette" type="AudioStreamPlayer2D" parent="." unique_id=231168209]
 stream = ExtResource("3_rdu13")

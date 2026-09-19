@@ -32,4 +32,4 @@ stream = ExtResource("4_6n0av")
 
 [node name="AudioBrique" type="AudioStreamPlayer2D" parent="." unique_id=769794826]
 stream = ExtResource("3_jdfn4")
-volume_db = -5.0
+volume_db = -10.0

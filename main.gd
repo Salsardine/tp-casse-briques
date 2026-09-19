@@ -1,15 +1,19 @@
 extends Node2D
 
 @export var scene_brique : PackedScene
-@export var nb_colonnes = 1
-@export var nb_lignes = 2
+@export var nb_colonnes = 5
+@export var nb_lignes = 5
 @export var espacement_x = 20
 @export var espacement_y = 20
 @export var marge_haut = 50
 
 var briques_restantes = 0
+var score = 0
 
 func _ready() -> void:
+	score = 0
+	$Score.text = "Score : 0"
+	$MessageEncourageant.text = ""
 	generer_briques()
 
 func generer_briques() -> void:
@@ -32,9 +36,23 @@ func generer_briques() -> void:
 			add_child(brique)
 			briques_restantes += 1
 
-func _on_brique_detruite() -> void:
+func _on_brique_detruite(points: int) -> void:
 	briques_restantes -= 1
+	ScoreTracker.score += points * ScoreTracker.cpt_hotness
+	ScoreTracker.cpt_hotness += 1
+	$Score.text = "Score : %d" % ScoreTracker.score
+	if ScoreTracker.cpt_hotness > 2 and ScoreTracker.cpt_hotness < 5:
+		$MessageEncourageant.text = "OUAIS CONTINUE COMME ÇA ! x%d" % ScoreTracker.cpt_hotness
+		$AnimationEncouragement.play("encouragement1")
+	elif ScoreTracker.cpt_hotness >= 5:
+		$MessageEncourageant.text = "Je te crois pas tu triche x%d"  % ScoreTracker.cpt_hotness
+		$AnimationEncouragement.play("encouragement1")
+	else :
+		$MessageEncourageant.text = ""		
+		
+	$AnimationScore.play("anim_score")
+	
 	if briques_restantes <= 0:
-		GameState.message_fin = "Gagné !"
-		GameState.victoire = true
+		ScoreTracker.message_fin = "Gagné !\nScore de la partie : %d" % ScoreTracker.score
+		ScoreTracker.victoire = true
 		get_tree().change_scene_to_file("res://restart/fin_de_partie.tscn")

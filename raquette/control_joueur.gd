@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var vitesse = 300
+@export var vitesse = 400
 
 var position_y_fixe : float
 
@@ -8,7 +8,7 @@ func _ready() -> void:
 	position.x = get_viewport_rect().size.x / 2
 	position.y = get_viewport_rect().size.y - get_viewport_rect().size.y / 6
 	position_y_fixe = position.y
-
+	
 func _physics_process(delta: float) -> void:
 	var direction = 0
 	if Input.is_action_pressed("p1_right"):
@@ -37,3 +37,5 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("bordure"):
 			if not $AudioMurRaquette.playing:
 				$AudioMurRaquette.play()
+		elif collider.is_in_group("balle"):
+			$AnimationRaquette.play("raquette")

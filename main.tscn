@@ -35,12 +35,150 @@ bounce = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vj2c"]
 size = Vector2(1174.5, 39)
 
+[sub_resource type="Animation" id="Animation_5vw27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "anim_score"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.73333335, 0.98333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5), Vector2(1, 1), Vector2(5, 5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_5vw27"),
+&"anim_score": SubResource("Animation_272bh")
+}
+
+[sub_resource type="GDScript" id="GDScript_272bh"]
+script/source = "extends RichTextLabel
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(178, 236)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "encouragement1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.326), Vector2(2, 2.652), Vector2(1, 1.326), Vector2(2, 2.652), Vector2(1, 1.326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.9764706, 0, 1), Color(1, 0.5529412, 0, 1), Color(1, 0, 0, 1), Color(0.48235294, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efxa6"]
+resource_name = "encouragement2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
+_data = {
+&"RESET": SubResource("Animation_kek77"),
+&"encouragement1": SubResource("Animation_4c57u"),
+&"encouragement2": SubResource("Animation_efxa6")
+}
+
 [node name="Node2D" type="Node2D" unique_id=1399996452]
 script = ExtResource("1_1bvp3")
 scene_brique = ExtResource("4_1bvp3")
 
 [node name="Raquette" parent="." unique_id=1268785383 groups=["raquette"] instance=ExtResource("1_ig7tw")]
-position = Vector2(78, 88)
 motion_mode = 1
 
 [node name="MurGauche" type="StaticBody2D" parent="." unique_id=1972830955 groups=["bordure"]]
@@ -58,7 +196,7 @@ position = Vector2(1154, 117)
 shape = SubResource("WorldBoundaryShape2D_5vj2c")
 
 [node name="Plafond" type="StaticBody2D" parent="." unique_id=96262344 groups=["bordure"]]
-position = Vector2(533, 0)
+position = Vector2(543, 0)
 physics_material_override = SubResource("PhysicsMaterial_1bvp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plafond" unique_id=358308072 groups=["bordure"]]
@@ -66,7 +204,6 @@ position = Vector2(-216, 0)
 shape = SubResource("WorldBoundaryShape2D_vo4pk")
 
 [node name="Balle" parent="." unique_id=372926582 groups=["balle"] instance=ExtResource("2_0xm2m")]
-position = Vector2(75, 58)
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 gravity_scale = 0.0
 
@@ -82,3 +219,28 @@ stream = ExtResource("6_7mycd")
 volume_db = 2.0
 autoplay = true
 script = ExtResource("7_272bh")
+
+[node name="Score" type="Label" parent="." unique_id=1589330949]
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 58.0
+offset_bottom = 36.0
+
+[node name="AnimationScore" type="AnimationPlayer" parent="." unique_id=1572077864]
+root_node = NodePath("../Score")
+libraries/ = SubResource("AnimationLibrary_5vw27")
+
+[node name="MessageEncourageant" type="RichTextLabel" parent="." unique_id=990806164]
+offset_left = 178.0
+offset_top = 236.0
+offset_right = 1330.0
+offset_bottom = 725.4419
+scale = Vector2(1, 1.326)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = SubResource("GDScript_272bh")
+
+[node name="AnimationEncouragement" type="AnimationPlayer" parent="." unique_id=1520384306]
+root_node = NodePath("../MessageEncourageant")
+libraries/ = SubResource("AnimationLibrary_efxa6")
+speed_scale = 0.35
