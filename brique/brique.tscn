@@ -3,11 +3,93 @@
 [ext_resource type="Texture2D" uid="uid://by5vsukftdem3" path="res://brique/skin_brique.tres" id="1_gmbj6"]
 [ext_resource type="Script" uid="uid://371h11k4wjml" path="res://brique/brique.gd" id="1_y8g86"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vj2c"]
-size = Vector2(80, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cipq"]
+radius = 8.0
+height = 80.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo4pk"]
-size = Vector2(80, 16)
+[sub_resource type="Animation" id="Animation_y8g86"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x53v1"]
+resource_name = "rotation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.283185307179586, 6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(10, 10), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dwun"]
+_data = {
+&"RESET": SubResource("Animation_y8g86"),
+&"rotation": SubResource("Animation_x53v1")
+}
 
 [node name="Brique" type="StaticBody2D" unique_id=418081115 groups=["brique"]]
 script = ExtResource("1_y8g86")
@@ -16,9 +98,8 @@ script = ExtResource("1_y8g86")
 texture = ExtResource("1_gmbj6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557399275]
-shape = SubResource("RectangleShape2D_5vj2c")
+rotation = 4.712389
+shape = SubResource("CapsuleShape2D_3cipq")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1916708104]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1972953830]
-shape = SubResource("RectangleShape2D_vo4pk")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2092023388]
+libraries/ = SubResource("AnimationLibrary_8dwun")

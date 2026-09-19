@@ -25,3 +25,13 @@ volume_db = -10.0
 
 [node name="AudioMurRaquette" type="AudioStreamPlayer2D" parent="." unique_id=231168209]
 stream = ExtResource("3_rdu13")
+
+[node name="ParticulesGauche" type="CPUParticles2D" parent="." unique_id=1754347107]
+position = Vector2(-36, 0)
+emitting = false
+amount = 20
+
+[node name="ParticulesDroite" type="CPUParticles2D" parent="." unique_id=237398666]
+position = Vector2(36, 0)
+emitting = false
+amount = 20

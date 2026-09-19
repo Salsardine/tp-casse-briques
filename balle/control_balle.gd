@@ -20,6 +20,7 @@ func _on_body_entered(body: Node) -> void:
 	
 	elif body.is_in_group("bordure"):
 		$AudioBordure.play()
-	
+
 	elif body.is_in_group("brique"):
 		$AudioBrique.play()
+		body.detruire()

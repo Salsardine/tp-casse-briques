@@ -33,28 +33,28 @@ normal = Vector2(-0.00448426, 0.9999899)
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vj2c"]
-size = Vector2(1226, 182)
+size = Vector2(1174.5, 39)
 
 [node name="Node2D" type="Node2D" unique_id=1399996452]
 script = ExtResource("1_1bvp3")
 scene_brique = ExtResource("4_1bvp3")
 
 [node name="Raquette" parent="." unique_id=1268785383 groups=["raquette"] instance=ExtResource("1_ig7tw")]
-position = Vector2(550, 528)
+position = Vector2(78, 88)
 motion_mode = 1
 
 [node name="MurGauche" type="StaticBody2D" parent="." unique_id=1972830955 groups=["bordure"]]
 physics_material_override = SubResource("PhysicsMaterial_b0id3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MurGauche" unique_id=1523040296 groups=["bordure"]]
-position = Vector2(0, 549)
+position = Vector2(0, 133)
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
 
 [node name="MurDroit" type="StaticBody2D" parent="." unique_id=32357416 groups=["bordure"]]
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MurDroit" unique_id=1580133652 groups=["bordure"]]
-position = Vector2(1153, 549)
+position = Vector2(1154, 117)
 shape = SubResource("WorldBoundaryShape2D_5vj2c")
 
 [node name="Plafond" type="StaticBody2D" parent="." unique_id=96262344 groups=["bordure"]]
@@ -62,10 +62,11 @@ position = Vector2(533, 0)
 physics_material_override = SubResource("PhysicsMaterial_1bvp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plafond" unique_id=358308072 groups=["bordure"]]
+position = Vector2(-216, 0)
 shape = SubResource("WorldBoundaryShape2D_vo4pk")
 
 [node name="Balle" parent="." unique_id=372926582 groups=["balle"] instance=ExtResource("2_0xm2m")]
-position = Vector2(547, 394)
+position = Vector2(75, 58)
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 gravity_scale = 0.0
 
@@ -73,10 +74,11 @@ gravity_scale = 0.0
 script = ExtResource("3_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fosse" unique_id=391886745]
-position = Vector2(572, 740)
+position = Vector2(578.75, 668)
 shape = SubResource("RectangleShape2D_5vj2c")
 
 [node name="Musique Fond" type="AudioStreamPlayer2D" parent="." unique_id=615367823]
 stream = ExtResource("6_7mycd")
+volume_db = 2.0
 autoplay = true
 script = ExtResource("7_272bh")

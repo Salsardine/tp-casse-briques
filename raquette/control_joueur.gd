@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var vitesse = 500
+@export var vitesse = 300
 
 var position_y_fixe : float
 
@@ -26,6 +26,10 @@ func _physics_process(delta: float) -> void:
 			$AudioDeplacement.play()
 	else:
 		$AudioDeplacement.stop()
+		
+	$ParticulesGauche.emitting = (direction == 1)
+	$ParticulesDroite.emitting = (direction == -1)
+	
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
