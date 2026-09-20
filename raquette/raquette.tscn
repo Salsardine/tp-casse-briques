@@ -48,16 +48,16 @@ size = Vector2(72, 16)
 [node name="Raquette" type="CharacterBody2D" unique_id=1268785383]
 script = ExtResource("1_8wwvb")
 
-[node name="SkinRaquetteA" type="Sprite2D" parent="." unique_id=1195807591]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1195807591]
 position = Vector2(7.1525574e-07, 0)
 scale = Vector2(1.15625, 1)
 texture = ExtResource("1_w6mu3")
 
 [node name="AnimationRaquette" type="AnimationPlayer" parent="." unique_id=1328820336]
-root_node = NodePath("../SkinRaquetteA")
+root_node = NodePath("../Sprite2D")
 libraries/ = SubResource("AnimationLibrary_652gn")
 
-[node name="CollisionShapeD2" type="CollisionShape2D" parent="." unique_id=632836557]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632836557]
 shape = SubResource("RectangleShape2D_w6mu3")
 
 [node name="AudioDeplacement" type="AudioStreamPlayer2D" parent="." unique_id=857519509]

@@ -72,7 +72,7 @@ script = SubResource("GDScript_tffrh")
 
 [node name="AudioVictoire" type="AudioStreamPlayer2D" parent="." unique_id=1624094797]
 stream = ExtResource("2_7el0v")
-volume_db = 1.0
+volume_db = 3.0
 pitch_scale = 1.3
 
 [node name="AudioDefaite" type="AudioStreamPlayer2D" parent="." unique_id=920275426]

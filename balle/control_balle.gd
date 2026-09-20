@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("raquette"):
-		ScoreTracker.cpt_hotness = 1
+		ScoreTracker.cpt_hotness = 0
 		$AudioRaquette.play()
 	
 	elif body.is_in_group("bordure"):

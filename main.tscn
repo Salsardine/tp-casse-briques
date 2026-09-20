@@ -174,12 +174,70 @@ _data = {
 &"encouragement2": SubResource("Animation_efxa6")
 }
 
+[sub_resource type="Animation" id="Animation_dg77c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageP2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "clignote"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageP2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w48qg"]
+resource_name = "disparition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MessageP2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w48qg"]
+_data = {
+&"RESET": SubResource("Animation_dg77c"),
+&"clignote": SubResource("Animation_ycdy4"),
+&"disparition": SubResource("Animation_w48qg")
+}
+
 [node name="Node2D" type="Node2D" unique_id=1399996452]
 script = ExtResource("1_1bvp3")
 scene_brique = ExtResource("4_1bvp3")
 
 [node name="Raquette" parent="." unique_id=1268785383 groups=["raquette"] instance=ExtResource("1_ig7tw")]
 motion_mode = 1
+
+[node name="Raquette2" parent="." unique_id=1038522105 groups=["raquette"] instance=ExtResource("1_ig7tw")]
+motion_mode = 1
+joueur_id = "p2"
+actif_au_demarrage = false
 
 [node name="MurGauche" type="StaticBody2D" parent="." unique_id=1972830955 groups=["bordure"]]
 physics_material_override = SubResource("PhysicsMaterial_b0id3")
@@ -244,3 +302,14 @@ script = SubResource("GDScript_272bh")
 root_node = NodePath("../MessageEncourageant")
 libraries/ = SubResource("AnimationLibrary_efxa6")
 speed_scale = 0.35
+
+[node name="MessageP2" type="Label" parent="." unique_id=822214072]
+offset_left = 533.0
+offset_top = 589.0
+offset_right = 628.0
+offset_bottom = 612.0
+text = "P2 -> Q ou D"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MessageP2" unique_id=525717792]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w48qg")

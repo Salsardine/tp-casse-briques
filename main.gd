@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var scene_brique : PackedScene
-@export var nb_colonnes = 5
-@export var nb_lignes = 5
+@export var nb_colonnes = 1
+@export var nb_lignes = 1
 @export var espacement_x = 20
 @export var espacement_y = 20
 @export var marge_haut = 50
@@ -15,6 +15,11 @@ func _ready() -> void:
 	$Score.text = "Score : 0"
 	$MessageEncourageant.text = ""
 	generer_briques()
+	$MessageP2/AnimationPlayer.play("clignote")
+	$Raquette2.joueur_rejoint.connect(_on_joueur2_rejoint)
+
+func _on_joueur2_rejoint(_id: String) -> void:
+	$MessageP2/AnimationPlayer.play("disparition")
 
 func generer_briques() -> void:
 	var brique_temp = scene_brique.instantiate()
@@ -38,7 +43,7 @@ func generer_briques() -> void:
 
 func _on_brique_detruite(points: int) -> void:
 	briques_restantes -= 1
-	ScoreTracker.score += points * ScoreTracker.cpt_hotness
+	ScoreTracker.score += points * (ScoreTracker.cpt_hotness+1)
 	ScoreTracker.cpt_hotness += 1
 	$Score.text = "Score : %d" % ScoreTracker.score
 	if ScoreTracker.cpt_hotness > 2 and ScoreTracker.cpt_hotness < 5:
